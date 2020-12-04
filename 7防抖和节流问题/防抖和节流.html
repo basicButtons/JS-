@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="id1">111</button>
+</body>
+<script>
+    // 防抖，防抖的原理是让时间等待一段时间之后发生，如果这个时候我们再次触发了条件，那么我们就要重新开始计时
+    function debounce(fun,delay){
+        let timer
+        return function(){
+            clearTimeout(timer)
+            timer =  setTimeout(function () {
+                fun()
+            },delay)
+        }
+    }
+
+    //  节流，节流的原理就是让我们在单位时间内只能触发一个次。
+    function throttle(func,wait){
+        let timerOut
+        return function(){
+            if(!timerOut){
+                timerOut = setTimeout(function(){
+                    timerOut = null
+                    func()
+                },wait)
+            }
+        }
+    }
+    let a = function(){console.log(1)}
+    let btn =document.getElementById("id1")
+    btn.addEventListener("click",throttle(a,1000))
+
+</script>
+</html>

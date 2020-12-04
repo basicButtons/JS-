@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 封装问题：
+    var some  = new Promise((resolve,reject)=>{
+        resolve(1)
+    })
+    some.then((value)=>{console.log(value*2)})
+    
+
+    // 期约连锁与期约合成
+    // 1.期约连锁
+    let  p = new Promise((resolve,reject)=>{
+        resolve("x")
+    })
+    p.then(()=>{
+        console.log("Y")
+    })
+    .then(()=>{
+        console.log("Z")
+    })
+    .then(()=>{
+        console.log("A")
+    })
+
+
+    // 2.期约合并
+    let q = new Promise((resolve,reject)=>{
+        resolve("X")
+    })
+    var t = new Promise(()=>{})
+    let a1 = Promise.resolve(1)
+    let a2 = Promise.resolve(2)
+    let a3 = Promise.resolve(3)
+    let a4 = Promise.resolve(4)
+    let a5 = Promise.resolve(5)
+    let a6 = Promise.resolve(6)
+    let b = Promise.all([a1,a2,a3,a4,a5,a6]).then(value => console.log(value))
+    let o = Promise.race([a1,a2,a3,a4,a5,a6]).then(value=>console.log("race + ",value))
+
+    // 3.串行期约的合并
+    function addTwo(x){
+        console.log(x)
+        return x+2
+    }
+    function addThree(x){
+        console.log(x)
+        return x+3
+    }
+    function addFive(x){
+        console.log(x)
+        return x+5
+    }
+    
+    function addTen(x){
+        return [addTwo,addThree,addFive].reduce((promise,fn)=>promise.then(fn),Promise.resolve(x))
+    }
+    addTen(5).then(value=>console.log(value))
+</script>
+</html>
