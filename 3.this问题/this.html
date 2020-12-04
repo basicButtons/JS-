@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // this指向问题：
+    // 1.默认绑定问题：
+    // 直接调用的时候this就是window
+
+    // 2.隐式绑定：
+    // 被对象调用的时候，this指向最顶层的对象，
+
+    // 3.显示绑定问题：
+    // call apply bind
+    // 首先说call和apply基本没有区别只是，apply直只接受两个参数，但是call要接受多个，同样的第一个参数都是this的指向
+    // apply第二个是一个array
+    // bind是返回一个新的函数。
+
+    // 4.new
+    // new的会指向那个新返回的对象。
+
+    // 5.箭头函数
+    // 箭头函数的this始终指向函数定义时的this，而非执行（调用）时的this。箭头函数中的this必须通过作用域链一层一层向外查找，来确定this指向。
+</script>
+</html>

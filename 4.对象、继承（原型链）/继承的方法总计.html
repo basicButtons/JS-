@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 继承的方法
+
+    // 1.原型与原型链的方法：（此处省略）
+
+    // 2.盗用构造函数
+    function SuperType(){
+        this.color = ["red","blue"]
+    }
+    function SubType(){
+        SubType.call(this) // 这个地方使用 call 和 apply是一模一样的
+        this.name = "MX"
+    }
+    // 优点：可以解决了原型和原型链的一些问题就是说我们没有办法对于父构造函数进行传递参数。
+    // 缺点：实际上这个方法将原型链就切断了，只能使用父构造函数上的属性和方法，没有办法去继承父类的原型上的属性和方法。
+
+    // 3.组合继承的方法
+    // 这种方法就是将原型继承和盗用构造函数结合起来使用：
+
+    function SuperType(){
+        this.color = red
+    }
+    function SubType(){
+        SuperType.call(this)
+        this.name =  "MX"
+    }
+    SubType.prototype.sex = "male"
+
+    // 4.原型式继承
+    // 思想是我们现在有一个实例对象，我们希望新建一个对象能够继承这个对象的所有方法。
+    // 主要思想写成代码就是如下面的代码。
+    function object(obj){
+        function F(){}
+        F.prototype = obj
+        return new F()
+    }
+    // 但是这个直接在Js中都是封装好的，只要我们去调用就好了。
+    var People = {
+        name:"MX",
+        age : 23,
+        sex: "male"
+    }
+    var person = Object.create(People)
+
+    // 5.寄生式继承
+    // 这种方法在我看来就是利用原型式继承的结果然后增强。
+    var person = {
+        name = "MX"
+    }
+    function createAnother(p){
+        var person = Object.create(p) //利用第4种方法返回一个新的对象。
+        p.sex = "male"  //增强一下。
+    }
+
+    //6.寄生式组合继承
+    // 这种方法也是在于改变第一种原型链的方法种没有办法向原型链条中添加参数的方法。
+    // 但是这种方法也有问题就是存在一定的效率问题就为了能向父亲元素中传入参数，牺牲了一部分性能。
+    function SuperType(){
+        this.color ="red"
+    }
+
+    function SubType(){
+        SuperType.call(this) // 第二次调用SuperType
+        this.name = "MX"
+    }
+    
+    SubType.prototype  = new SuperType()  //第一次调用SuperType
+
+
+
+</script>
+
+</html>

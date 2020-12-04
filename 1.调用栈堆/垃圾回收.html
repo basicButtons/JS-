@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 垃圾回收的算法：
+    // 1.引用计数
+    // 引用标记最主要的问题就是循环引用问题。
+
+    // 2.标记清除
+    // 标记清除算法将“不再使用的对象”定义为“无法到达的对象”。即从根部（在JS中就是全局对象）出发定时扫描内存中的对象，凡是能从根部到达的对象，保留。那些从根部出发无法触及到的对象被标记为不再使用，稍后进行回收。
+
+    // 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 对于不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）
+
+
+    // 内存泄露的4中情况
+
+    // 1.意外的全局变量
+    // 比如在函数中直接给一个变量赋值，不使用var let const
+    // 在函数中直接使用this，而意外的给window创建了一个属性。
+
+    // 2.被遗忘的计时器
+    // 比如说一个计时器一直在运行。
+
+    // 3.node节点和js循环应用
+
+    // 4.闭包
+</script>
+<script>
+    console.log(fun)
+
+    console.log(person)
+</script>
+
+<script>
+    console.log(person)
+
+    console.log(fun)
+
+    var person = "Eric";
+
+    console.log(person)
+
+    function fun() {
+        console.log(person)
+        var person = "Tom";
+        console.log(person)
+    }
+
+    fun()
+
+    console.log(person)
+</script>
+</html>

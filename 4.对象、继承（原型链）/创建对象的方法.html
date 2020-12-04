@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 创建对象的几种方法：
+    // 1.工厂函数
+    function get(){
+        var a = {}
+        a.name ="MX"
+        return a 
+    }
+    var so = get()
+    
+    // 2.构造函数
+    function get(){
+        this.name = "MX"
+    }
+    var so = new get()
+
+    // 3.原型模式
+    function Person(){}
+    Person.prototype.name = "MX"
+    Person.prototype.age = 23
+    Person.prototype.sex = male
+    var p = new Person()
+
+    // 4.构造函数+原型。
+    // 这个方式就不去讲了，直接把上面的结合就好了
+    
+</script>
+</html>
