@@ -88,6 +88,26 @@
     // b: undefined
     // c: /^a/g
     // __proto__: Object
+
+
+    function deepClone1(obj){
+        let res = {}
+        if (!(typeof obj === "object")){
+            return obj
+        }
+        for(key in obj){
+            if  (obj.hasOwnProperty(key)){
+                if(typeof obj[key] == "object"){
+                    res[key]  = deepClone1(obj[key])
+                }else{
+                    res[key]= obj[key]
+                }
+            }
+        }
+        return res
+    }
+    var anothera= deepClone1(a)
+    console.log(anothera)
 </script>
 
 </html>
