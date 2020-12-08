@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 首先是XMLHttpRequest 使用
+    // 状态码
+    // 跨域策略
+    url = "data/data.json"
+    const xhr = new XMLHttpRequest()
+    xhr.open("get",url,true)
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4){
+            if(xhr.status === 200){
+                console.log(xhr.response)
+            }
+        }
+    }
+    xhr.send()
+    // readystatechange 属性 
+    // 0表示还没有调用send方法
+    // 1表示已调用send方法
+    // 2send已经交互完成
+    // 3表示正在解析响应体
+    // 4表示已经解析完成
+</script>
+
+</html>

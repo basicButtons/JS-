@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="some"></div>
+</body>
+<script>
+    // DOM节点操作
+    // property 这个是对象属性
+    var div1 = document.getElementById("some")
+    div1.style.width = "100px"
+    div1.style.height = "100px"
+    div1.style.backgroundColor = "black"
+
+    // attribute 这个是标签属性
+    div1.setAttribute("data-some","some")
+    console.log(div1.getAttribute("data-some")) 
+
+    // 差异：property 这个是对象属性 的修改，不会体现在html结构中，但是修改html 的attribute 这个是标签属性 会修改html结构
+    // 两者都有可能引起DOM重新渲染。
+
+
+    // DOM结构操作
+
+    // 对于DOM的一些操作
+    // 新建node节点
+    document.createElement
+    // 插入node节点
+    var someNode  = document.getElementById("test")
+    someNode.appendChild
+    // 移动节点
+    someNode.remove()
+    // 获取父元素
+    someNode.parentNode
+    // 获取子元素列表
+    someNode.childNodes
+    // 删除节点
+    // nodeName 和 nodeType 
+
+    // Document 类型
+    // 文档信息：三个属性URL、domain、referee
+    // URL是当前页面的完整的URL，domian是当前的域名，而referee是链接到当前页面的url。
+    // 这个地方主要讲 domain 
+    // 因为这三个中只有domain是可以设置的，domian中能放松，不能收紧。
+    // 而且因为跨域问题的存在问题，我们可以把每个页面上的document.domain设置成一致的时候，这些页面就可以访问对方的JavaScript对象了。
+
+    // 文档写入 write  writeln 方法 
+
+
+    // DOM选择器
+    // querySelecter()  queereySelecterAll() matches()返回布尔值
+    // 这三个传入一个CSS选择器
+
+    // 
+</script>
+</html>

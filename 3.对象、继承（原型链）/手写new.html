@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 首先明确new 这个字符都做了哪些工作
+    // 首先第一步：new新建了一个对象 称为obj，
+    // 第二步：new 将 obj.__proto__ = Fn.prototype    Fn是构造函数
+    // 第三步：将构造函数中的属性和方法进行修改。使用call和apply都可以
+    // 第四步：返回结果
+    function  Fn(name) {
+        this.name =  name
+    }
+    function _new(fn,...args) {
+        let obj =  Object.create(fn.prototype)
+        let res =  fn.call(obj,...args)
+        return typeof res === "object" ? res : obj
+    }
+    let a =  _new(Fn,"狗子")
+    console.log(a)
+</script>
+</html>

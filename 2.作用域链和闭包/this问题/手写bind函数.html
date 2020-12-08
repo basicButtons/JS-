@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写bind函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function a(){
+
+        return this.x
+    }
+    let x = 10
+    let b= {
+        x:20
+    }
+    
+    Function.prototype.bind1 = function(){
+        // 这个地方是对所有传入的参数，数组化
+        let args =  Array.prototype.slice.call(arguments)
+        // 取出我们所要的对象
+        const t = args.shift()
+        // 转换self，这个时候this就是代指那个我们需要绑定的函数
+        let self = this
+        // 返回一个函数
+        return function(){
+
+            // 调用的时候执行
+            return self.apply(t,args.concat(Array.prototype.slice.call(arguments)))
+        }
+    }
+    let c  =  a.bind1(b)
+    console.log(c(2))
+
+
+    Function.prototype.myBind = function () {
+        let self = this
+        let args =  Array.prototype.slice.call(arguments)
+        let t  = args.shift()
+        return function () {
+            return self.apply(t,args.concat(Array.prototype.slice.call(arguments)))
+        }
+    }
+    let d  =  a.myBind(b)
+    console.log(d(2))
+
+</script>
+</html>

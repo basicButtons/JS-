@@ -7,6 +7,7 @@
 </head>
 <body>
     <button id="id1">111</button>
+    <button id="id2">222</button>
 </body>
 <script>
     // 防抖，防抖的原理是让时间等待一段时间之后发生，如果这个时候我们再次触发了条件，那么我们就要重新开始计时
@@ -36,5 +37,37 @@
     let btn =document.getElementById("id1")
     btn.addEventListener("click",throttle(a,1000))
 
+
+
+
+
+
+
+    // 防抖问题
+    function  debounce1(func,delay){
+        let timer 
+        return function(){
+            clearTimeout(timer)
+            timer = setTimeout(func,delay)
+        }
+    }
+    function cons(){
+        console.log(1)
+    }
+
+    function throttle1(func,await){
+        let timer
+        return function(){
+            if(!timer){
+            timer = setTimeout(function(){
+                func()
+                timer = null
+            },await)
+            }
+        }
+    }
+    let a1 = function(){console.log(1)}
+    let btn1 =document.getElementById("id2")
+    btn1.addEventListener("click",debounce1(a1,1000))
 </script>
 </html>
